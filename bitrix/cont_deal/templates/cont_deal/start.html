@@ -1,0 +1,6 @@
+<h1>Стартовая страница</h1>
+<form action="{% url 'getpost' %}" method="post">{% csrf_token %}
+  <textarea name="name" rows="20" cols="60"></textarea>
+  <br><br>
+  <input type="submit" name="sent" value="Отправить">
+</form>
