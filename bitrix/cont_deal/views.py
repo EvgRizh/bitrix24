@@ -22,7 +22,7 @@ def start(request):
 
 def getreq(request):
     if request.method == "POST":
-        response = json.loads(request.POST.get('name'))#ответ полученный из POST запроса приведенный к словарю python
+        response = json.loads(request.POST.get('name'))#ответ полученный из POST запроса, приведенный к словарю python
 
         exit = "" #строковая переменная для формирования результата запроса
 
@@ -33,9 +33,9 @@ def getreq(request):
             params = {"auth": auth, "fields[FIELD_NAME]": field, "fields[USER_TYPE_ID]": type}#формируем параметры запроса
             requests.post(crm_deal_userfield_add, params=params) #запрос на формирование новых полей
 
-        #Проверка контакта (новый или нет), если новый, то контак добавляется в b24
+        #Проверка контакта (новый или нет), если новый, то контакт добавляется в b24
         cont_new, _ = cont_is_new(response) #присваивание переменной cont_new результата выполнения функции
-        if cont_new:#если контакт новы
+        if cont_new:#если контакт новый
             cont_req = {"auth": auth, "fields[NAME]": response["client"]["name"],
                     "fields[LAST_NAME]": response["client"]["surname"], "fields[PHONE][0][VALUE]": response["client"]["phone"],
                         "fields[ADDRESS]": response["client"]["adress"]}#формируем параметры запроса
